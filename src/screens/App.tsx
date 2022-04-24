@@ -19,16 +19,22 @@ import "../styles/app.scss";
 
 type Todos = Todo[];
 
+const sortByDate = (_items: Todos): Todos => {
+  return _items.sort((a, b) => {
+    return differenceInSeconds(new Date(b.createdAt), new Date(a.createdAt));
+  });
+};
+
 export const App: React.FC = () => {
   const loadTodos = (): Todos => {
     const _itemsString = localStorage.getItem("items");
     if (_itemsString == null) return [];
 
     const _items: Todos = JSON.parse(_itemsString);
-    _items.sort((a, b) => {
-      return differenceInSeconds(new Date(b.createdAt), new Date(a.createdAt));
-    });
-    return _items;
+    // _items.sort((a, b) => {
+    //   return differenceInSeconds(new Date(b.createdAt), new Date(a.createdAt));
+    // });
+    return sortByDate(_items);
   };
 
   const [todoItems, setTodoItems] = useState<Todos>(loadTodos());
@@ -64,7 +70,8 @@ export const App: React.FC = () => {
   const onAddTodo = (todo: Todo) => {
     // "todoItems ?? []" means that if todoItems is undefined or null then it returns []
     // the result from above is destructured and "todo" is appended at the end
-    setTodoItems([...(todoItems ?? []), todo]);
+    const _items = [...(todoItems ?? []), todo];
+    setTodoItems(sortByDate(_items));
   };
 
   // Call "saveTodos" on every change to "todoItems"
