@@ -44,3 +44,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Check refs:
+
+[How to Use localStorage with React Hooks to Set and Get Items](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/)
+
+[SASS Functions - w3schools](https://www.w3schools.com/sass/sass_functions_color.php)
+
+[CodePen - React Fancy Cards With Delete Button](https://codepen.io/davidmellul/pen/oyopdx)

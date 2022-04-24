@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+// Custom colors
+$main-text: hsl(0, 0%, 20%);
+$main: hsl(0, 60%, 42%);
+$main--alt: lighten($main, 10%);
+$secondary: hsl(0, 0%, 98%);
+$secondary--alt: darken($secondary, 4%);
+$card: hsl(0, 0%, 98%);
+$modal: hsl(0, 0%, 98%);
+
+.container {
+  margin: 1rem;
+  display: flex;
+}
+
+.right-container,
+.left-container {
+  margin: 1rem;
+  min-width: 20rem;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $main-text;
+}
+
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: $main;
+  color: $secondary;
+  border: 1px solid $main;
+  margin: 0 1rem;
+  font-family: "Roboto";
+}
+
+.btn:hover {
+  background-color: $main--alt;
+  border-color: $main--alt;
+  color: $secondary--alt;
+}
+
+.btn--alt {
+  background-color: $secondary;
+  color: $main;
+}
+
+.btn--alt:hover {
+  background-color: $secondary--alt;
+  color: $main--alt;
+}
+
+.normal-card {
+  background-color: $card;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 20rem;
+  margin-bottom: 1rem;
+}
+
+.normal-card:hover {
+  background-color: $secondary--alt;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  float: left;
+  width: 350px;
+  min-height: 150px;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.25s;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  // h3 {
+  //   font-size: 2em;
+  // }
+
+  &:hover {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  &.rounded {
+    border-radius: 5px;
+  }
+
+  &.gradient {
+    color: white;
+    font-weight: bolder;
+    &.gradient-1 {
+      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    }
+    &.gradient-2 {
+      background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    }
+    &.gradient-3 {
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    }
+    &.gradient-4 {
+      background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    }
+  }
+
+  .delete-btn {
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 1.2em;
+    position: absolute;
+    right: 7px;
+    top: 2px;
+  }
+
+  // .garbage-icon g, path {
+  //   fill: $main-text;
+  // }
+
+  .time {
+    color: lighten($main-text, 20%);
+    position: absolute;
+    left: 7px;
+    bottom: 2px;
+  }
+
+  .textarea {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    width: 320px;
+    height: 75px;
+  }
+}
+
+.actions {
+  // text-align: right;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.modal {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: $modal;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  position: fixed;
+  width: 500px;
+  top: 20vh;
+  left: calc(50% - 250px);
+  z-index: 10;
+}
+
+.backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+  .right-container,
+  .left-container {
+    margin: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal {
+    width: 350px;
+    left: calc(50% - 175px);
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    margin: 5px;
+  }
+}
