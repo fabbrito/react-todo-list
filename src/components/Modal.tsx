@@ -7,21 +7,17 @@ interface Props {
 }
 
 export const Modal: React.FC<Props> = ({ text, onCancel, onConfirm }) => {
-  // const lettersToShow: number = 40;
-  // const lettersToShowEnd: number = 5;
-  // // Custom text lenght
-  // {text.length > lettersToShow ?
-  //         text
-  //           .slice(0, lettersToShow - lettersToShowEnd - 3)
-  //           .concat("...", text.slice(-lettersToShowEnd))
-  //       : text}
   return (
     <div className="modal">
       <p>Delete "{text}"?</p>
-      <button className="btn btn--alt" onClick={onCancel}>
+      <button
+        className="btn btn--alt"
+        onClick={onCancel}
+        disabled={onCancel == null}
+      >
         Cancel
       </button>
-      <button className="btn" onClick={onConfirm}>
+      <button className="btn" onClick={onConfirm} disabled={onConfirm == null}>
         Confirm
       </button>
     </div>
