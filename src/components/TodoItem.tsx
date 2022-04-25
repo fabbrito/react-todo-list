@@ -9,10 +9,12 @@ export type Todo = {
   text: string | null;
   checked: boolean;
   createdAt: string;
+  isVisible: boolean;
 };
 
-interface Props extends Todo {
-  onDelete: (id: string) => void;
+interface Props {
+  todo: Todo;
+  updateTodos: (action: string, todo: Todo) => void;
 }
 
 // // Remove "createdAt" property and extend interface
@@ -21,13 +23,10 @@ interface Props extends Todo {
 // }
 
 export const TodoItem: React.FC<Props> = ({
-  id,
-  text,
-  checked,
-  createdAt,
-  onDelete,
+  todo,
+  updateTodos,
 }) => {
-  const todoText: string = text ?? `Id: ${id}`;
+  const todoText: string = todo.text ?? `Id: ${todo.id}`;
 
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
@@ -45,12 +44,27 @@ export const TodoItem: React.FC<Props> = ({
 
   const deleteHandler: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     // Calls the passed function to delete the todo component with matching "id"
-    onDelete(id);
+    updateTodos("delete", { ...todo });
     setModalIsOpen(false);
   };
 
+  const onCheckboxToggle = (isChecked: boolean) => {
+    // event.stopPropagation();
+    let _newTodo = { ...todo };
+    _newTodo.checked = isChecked;
+    updateTodos("update", _newTodo);
+  };
+
   return (
-    <Card rounded hasDelete onClickDelete={openModalToDelete}>
+    <Card
+      rounded
+      hasDelete
+      onClickDelete={openModalToDelete}
+      checked={todo.checked}
+      hasCheckbox
+      onCheckboxToggle={onCheckboxToggle}
+      isVisible={todo.isVisible}
+    >
       <h3>{todoText}</h3>
       {/* <div className="actions">
           <DateItem dateString={createdAt} />
@@ -58,7 +72,7 @@ export const TodoItem: React.FC<Props> = ({
             Delete
           </button>
         </div> */}
-      <DateItem dateString={createdAt} />
+      <DateItem dateString={todo.createdAt} />
       {modalIsOpen && (
         <Modal
           text={todoText}

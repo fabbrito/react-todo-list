@@ -17,6 +17,7 @@ $modal: hsl(0, 0%, 98%);
 .right-container,
 .left-container {
   margin: 1rem;
+  margin-left: 2rem;
   min-width: 20rem;
 }
 
@@ -118,6 +119,15 @@ h4 {
     }
   }
 
+  &.checked {
+    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    text-decoration: line-through;
+  }
+
+  &.hide {
+    display: none;
+  }
+
   .delete-btn {
     cursor: pointer;
     font-weight: bolder;
@@ -127,11 +137,15 @@ h4 {
     top: 2px;
   }
 
-  // .garbage-icon g, path {
-  //   fill: $main-text;
-  // }
+  .checkbox {
+    cursor: pointer;
+    position: absolute;
+    transform: scale(1.5);
+    left: -30px;
+    top: calc(50% - 10px);
+  }
 
-  .time {
+  .timestamp {
     color: lighten($main-text, 20%);
     position: absolute;
     left: 7px;
@@ -143,6 +157,55 @@ h4 {
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     width: 320px;
     height: 75px;
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
+  position: relative;
+  width: 350px;
+  padding: 0;
+  margin-bottom: 1rem;
+
+  .checkbox {
+    cursor: pointer;
+    position: absolute;
+    left: -30px;
+    top: calc(50% - 10px);
+    transform: scale(1.5);
+  }
+
+  .garbage-icon {
+    cursor: pointer;
+    position: absolute;
+    left: 0px;
+    top: calc(50% - 25px);
+    height: 50px;
+    aspect-ratio: 1/1;
+    transform: scale(1);
+  }
+
+  .garbage-icon g,
+  path {
+    fill: $main-text;
+  }
+
+  .clear-search{
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 1.2em;
+    position: absolute;
+    right: 7px;
+    top: calc(50% - 15px);
+  }
+
+  .inputField {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    width: 310px;
   }
 }
 
@@ -177,7 +240,6 @@ h4 {
   z-index: 1;
 }
 
-
 @media (max-width: 800px) {
   .container {
     flex-direction: column-reverse;
@@ -185,6 +247,27 @@ h4 {
   .right-container,
   .left-container {
     margin: 0;
+  }
+  .card {
+    .checkbox {
+      left: 7px;
+      top: 7px;
+    }
+  }
+  .toolbar {
+    padding: 0;
+    justify-content: space-between;
+    .checkbox {
+      position: relative;
+      left: 7px;
+    }
+    .garbage-icon{
+      position: relative;
+      left: auto;
+    }
+    .inputField {
+      width: 280px;
+    }
   }
 }
 

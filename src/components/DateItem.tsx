@@ -14,7 +14,7 @@ export const DateItem: React.FC<Props> = ({
   // const dateString = date.toISOString();
   const dateISO = parseISO(dateString);
   return (
-    <time dateTime={dateString} className="time">
+    <time dateTime={dateString} className="timestamp">
       {/* different format() string options on https://date-fns.org/v2.16.1/docs/format */}
       {!formatToPTBR
         ? format(dateISO, "LLLL d, yyyy")

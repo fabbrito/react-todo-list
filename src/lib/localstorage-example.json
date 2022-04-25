@@ -1,0 +1,30 @@
+[
+  {
+    "id": "accdcc74-a3c4-498b-829c-2092e69e6c82",
+    "text": "01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 89 | 01 23 45 67 8",
+    "checked": false,
+    "createdAt": "2022-04-24T13:53:02.622Z",
+    "isVisible": true
+  },
+  {
+    "id": "32634a30-9d0c-438c-ab6d-e9208befafa6",
+    "text": "Learn React!",
+    "checked": false,
+    "createdAt": "2022-04-24T12:30:09.960Z",
+    "isVisible": true
+  },
+  {
+    "id": "22f7a794-4d18-44e1-b59a-30e8e0e690e5",
+    "text": "Learn Typescript!",
+    "checked": false,
+    "createdAt": "2022-04-24T12:30:08.960Z",
+    "isVisible": true
+  },
+  {
+    "id": "72282824-5114-44e1-a954-fa44e3f300ef",
+    "text": "Explore full Typescript courses! Now on YouTube!",
+    "checked": false,
+    "createdAt": "2022-04-24T12:30:07.960Z",
+    "isVisible": true
+  }
+]
