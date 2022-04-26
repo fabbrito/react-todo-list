@@ -26,10 +26,10 @@ export const Toolbar: React.FC<Props> = ({
     setIsChecked(!isChecked);
   };
 
-  const onClearSearch: React.MouseEventHandler<HTMLSpanElement> = (event) => {
-    setInputField("");
-    searchFunction("");
-  };
+  // const onClearSearch: React.MouseEventHandler<HTMLSpanElement> = (event) => {
+  //   setInputField("");
+  //   searchFunction("");
+  // };
 
   const inputHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setInputField(event.target.value);
@@ -65,19 +65,19 @@ export const Toolbar: React.FC<Props> = ({
       />
       <GarbageIcon className="garbage-icon" onClick={openModalToDelete} />
       <input
-        type="text"
+        type="search"
         className="inputField"
         onChange={inputHandler}
         value={inputField}
         placeholder="Search in todos ..."
       />
-      <span className="clear-search" onClick={onClearSearch}>
+      {/* <span className="clear-search" onClick={onClearSearch}>
         &times;
-      </span>
+      </span> */}
       {/* <GarbageIcon className="garbage-icon search" onClick={onClearSearch} /> */}
       {modalIsOpen && (
         <Modal
-          text="Delete all checked todos?"
+          text={"Delete all checked todos?"}
           onCancel={closeModalHandler}
           onConfirm={deleteHandler}
         />
