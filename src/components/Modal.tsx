@@ -6,10 +6,14 @@ interface Props {
   onConfirm?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Modal: React.FC<Props> = ({ text, onCancel, onConfirm }) => {
+export const Modal: React.FC<Props> = ({
+  text,
+  onCancel,
+  onConfirm,
+}) => {
   return (
     <div className="modal">
-      <p>Delete "{text}"?</p>
+      <p>{text}</p>
       <button
         className="btn btn--alt"
         onClick={onCancel}

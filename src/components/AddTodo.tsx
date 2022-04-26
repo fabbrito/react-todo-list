@@ -23,7 +23,7 @@ export const AddTodo: React.FC<Props> = ({ updateTodos }) => {
     setText(null);
   };
 
-  const onTextChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
+  const onTextareaChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
     event
   ) => {
     setText(event.target.value);
@@ -33,8 +33,8 @@ export const AddTodo: React.FC<Props> = ({ updateTodos }) => {
     <Card rounded>
       <form onSubmit={submitHandler}>
         <textarea
-          placeholder="Add an item to the list ..."
-          onChange={onTextChange}
+          placeholder="Add new Todo here."
+          onChange={onTextareaChange}
           value={text ?? ""}
           className="textarea"
           maxLength={500}

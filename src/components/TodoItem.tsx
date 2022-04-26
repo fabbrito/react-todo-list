@@ -75,7 +75,7 @@ export const TodoItem: React.FC<Props> = ({
       <DateItem dateString={todo.createdAt} />
       {modalIsOpen && (
         <Modal
-          text={todoText}
+          text={`Delete "${todoText}"?`}
           onCancel={closeModalHandler}
           onConfirm={deleteHandler}
         />

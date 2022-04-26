@@ -38,9 +38,9 @@ export const Card: React.FC<Props> = ({
 
   return (
     <div
-      className={`card ${rounded ? "rounded" : ""} ${
-        hasGradient ? `gradient gradient-${gradient ?? 0}` : ""
-      } ${checked ? "checked" : ""} ${!isVisible ? "hide" : ""}`}
+      className={`card${rounded ? " rounded" : ""}${
+        hasGradient ? ` gradient gradient-${gradient ?? 0}` : ""
+      }${checked ? " checked" : ""}${!isVisible ? " hide" : ""}`}
     >
       {children}
       {hasDelete && (
