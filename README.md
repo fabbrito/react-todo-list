@@ -53,3 +53,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 [SASS Functions - w3schools](https://www.w3schools.com/sass/sass_functions_color.php)
 
 [CodePen - React Fancy Cards With Delete Button](https://codepen.io/davidmellul/pen/oyopdx)
+
+[CSS { IRL } - Animating Underlines](https://css-irl.info/animating-underlines/)
