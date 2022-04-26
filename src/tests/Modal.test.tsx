@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Modal } from "../components/Modal";
 
@@ -10,7 +9,7 @@ test("Checks Modal component", () => {
   render(<Modal text={testMessage} onConfirm={handleClose} />);
 
   // Checks if the messages appears on the modal
-  expect(screen.queryByText(testMessage)).toBeNull();
+  expect(screen.getByText(testMessage)).toBeInTheDocument();
 
   // Since no onCancel function was provided, the button should be disabled
   expect(screen.getByRole("button", { name: /Cancel/i })).toBeDisabled();
