@@ -37,17 +37,7 @@ export const Card: React.FC<Props> = ({
   }, [checked]);
 
   return (
-    <div
-      className={`card${rounded ? " rounded" : ""}${
-        hasGradient ? ` gradient gradient-${gradient ?? 0}` : ""
-      }${checked ? " checked" : ""}${!isVisible ? " hide" : ""}`}
-    >
-      {children}
-      {hasDelete && (
-        <span className="delete-btn" onClick={onClickDelete}>
-          &times;
-        </span>
-      )}
+    <div className={`card-container${!isVisible ? " hide" : ""}`}>
       {hasCheckbox && (
         <input
           type="checkbox"
@@ -56,6 +46,18 @@ export const Card: React.FC<Props> = ({
           onChange={onCheckboxChange}
         />
       )}
+      <div
+        className={`card${rounded ? " rounded" : ""}${
+          hasGradient ? ` gradient gradient-${gradient ?? 0}` : ""
+        }${checked ? " checked" : ""}`}
+      >
+        {children}
+        {hasDelete && (
+          <span className="delete-btn" onClick={onClickDelete}>
+            &times;
+          </span>
+        )}
+      </div>
     </div>
   );
 };
