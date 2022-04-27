@@ -119,7 +119,7 @@ export const App: React.FC = () => {
   };
 
   // Delete all items with truthy "checked" property
-  const onDeleteAll = () => {
+  const onDeleteAll = async () => {
     setTodoItems(
       [...todoItems].filter((_todo) => {
         return !_todo.checked;
@@ -138,26 +138,32 @@ export const App: React.FC = () => {
   useEffect(saveTodos, [todoItems]);
 
   return (
-    <div className="container">
-      <div className="left-container">
-        <h1>My Todos</h1>
+    <>
+      <div className="top-container stick">
         <Toolbar
           searchFunction={debouncedSearch}
           onCheckAll={onCheckAll}
           onDeleteAll={onDeleteAll}
         />
-        <div className="todo-container">
-          {todoItems?.map((todo) => {
-            return (
-              <TodoItem key={todo.id} todo={todo} updateTodos={updateTodos} />
-            );
-          })}
+      </div>
+      <div className="container">
+        <div className="left-container">
+          <h1>My Todos</h1>
+          <div className="todos-container">
+            {todoItems?.map((todo) => {
+              return (
+                <TodoItem key={todo.id} todo={todo} updateTodos={updateTodos} />
+              );
+            })}
+          </div>
+        </div>
+        <div className="right-container">
+          {/* <div className="stick-top"> */}
+          <h1>Add Todos</h1>
+          <AddTodo updateTodos={updateTodos} />
+          {/* </div> */}
         </div>
       </div>
-      <div className="right-container">
-        <h1>Add Todos</h1>
-        <AddTodo updateTodos={updateTodos} />
-      </div>
-    </div>
+    </>
   );
 };
