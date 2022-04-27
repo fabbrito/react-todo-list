@@ -1,6 +1,6 @@
 $main-text: hsl(0, 0%, 20%);
 
-$main: hsl(0, 60%, 42%);
+$main: darken(#8fd3f4, 20%);
 $main--alt: lighten($main, 10%);
 $secondary: hsl(0, 0%, 98%);
 $secondary--alt: darken($secondary, 4%);
@@ -11,4 +11,4 @@ $modal: hsl(0, 0%, 98%);
 $white: white;
 $gray: hsl(0, 0%, 50%);
 $gray-20:hsl(0, 0%, 20%);
-$gray-90: hsl(0, 0%, 90%); ;
+$gray-90: hsl(0, 0%, 90%);
