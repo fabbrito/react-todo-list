@@ -73,12 +73,6 @@ export const App: React.FC = () => {
   };
 
   // Using _debounce from lodash to debounce input for 300ms and call the search function every 1s.
-  // "useCallback" is used so that the debounced search function is memoized for each set of "todoItems",
-  // which means that a cached version of "debouncedSearch" is used until a change occurs with "todoItems".
-  const debouncedSearch = useCallback(
-    (text) => debouncedSearchFunction(text),
-    [todoItems]
-  );
   const debouncedSearchFunction = _debounce(
     (text: string) => {
       setTodoItems(
@@ -101,6 +95,13 @@ export const App: React.FC = () => {
     },
     300,
     { maxWait: 1000 }
+  );
+
+  // "useCallback" is used so that the debounced search function is memoized for each set of "todoItems",
+  // which means that a cached version of "debouncedSearch" is used until a change occurs with "todoItems".
+  const debouncedSearch = useCallback(
+    (text) => debouncedSearchFunction(text),
+    [debouncedSearchFunction]
   );
 
   // Change "checked" property of all visible items
