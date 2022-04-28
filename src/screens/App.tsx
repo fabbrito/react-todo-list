@@ -119,12 +119,17 @@ export const App: React.FC = () => {
     setTodoItems(sortByDate([...visibleItems, ...notVisibleItems]));
   };
 
-  // Delete all items with truthy "checked" property
+  // Delete all items with truthy "checked" property then make the rest of the items visible
   const onDeleteAll = async () => {
     setTodoItems(
-      [...todoItems].filter((_todo) => {
-        return !_todo.checked;
-      })
+      [...todoItems]
+        .filter((_todo) => {
+          // Filter out all those that are "checked" and "isVisible"
+          return !(_todo.checked && _todo.isVisible);
+        })
+        .map((_todo) => {
+          return { ..._todo, isVisible: true };
+        })
     );
   };
 
@@ -139,7 +144,7 @@ export const App: React.FC = () => {
   useEffect(saveTodos, [todoItems]);
 
   return (
-    <>
+    <div className="app">
       <div className="top-container stick">
         <Toolbar
           searchFunction={debouncedSearch}
@@ -165,6 +170,6 @@ export const App: React.FC = () => {
           {/* </div> */}
         </div>
       </div>
-    </>
+    </div>
   );
 };
