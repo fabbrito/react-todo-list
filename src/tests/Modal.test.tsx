@@ -1,22 +1,56 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { Modal } from "../components/Modal";
 
-// Component checks
-test("Checks Modal component", () => {
-  const testMessage: string = "THIS TEST!";
-  const handleClose = jest.fn();
+describe("Modal", () => {
+  afterEach(cleanup);
 
-  render(<Modal text={testMessage} onConfirm={handleClose} />);
+  it("Should show the two different strings on the modal", () => {
+    const firstString: string = "first";
+    const secondString: string = "second";
 
-  // Checks if the messages appears on the modal
-  expect(screen.getByText(testMessage)).toBeInTheDocument();
+    render(
+      <Modal text={firstString}>
+        <p>{secondString}</p>
+      </Modal>
+    );
 
-  // Since no onCancel function was provided, the button should be disabled
-  expect(screen.getByRole("button", { name: /Cancel/i })).toBeDisabled();
+    expect(screen.getByText(firstString)).toBeInTheDocument();
+    expect(screen.getByText(secondString)).toBeInTheDocument();
+  });
 
-  expect(screen.getByRole("button", { name: /Confirm/i })).not.toBeDisabled();
+  it("Should have both buttons disabled", () => {
+    render(<Modal />);
+    expect(screen.getByTestId("modal-cancel-btn")).toHaveAttribute("disabled");
+    expect(screen.getByTestId("modal-confirm-btn")).toHaveAttribute("disabled");
+  });
 
-  fireEvent.click(screen.getByRole("button", { name: /Confirm/i }));
+  it("Should have both buttons enabled", () => {
+    const mockFunction = jest.fn();
+    render(<Modal onCancel={mockFunction} onConfirm={mockFunction} />);
+    expect(screen.getByTestId("modal-cancel-btn")).not.toBeDisabled();
+    expect(screen.getByTestId("modal-confirm-btn")).not.toBeDisabled();
+  });
 
-  expect(handleClose).toHaveBeenCalledTimes(1);
+  it("Should call 'onConfirm' once after clicking 'Confirm'", () => {
+    const onConfirmMock = jest.fn();
+    render(<Modal onConfirm={onConfirmMock} />);
+
+    const confirmButton = screen.getByTestId("modal-confirm-btn");
+    fireEvent.click(confirmButton);
+
+    expect(onConfirmMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should call 'onCancel' twice: once after clicking 'Cancel' and another with the backdrop", () => {
+    const onCancelMock = jest.fn();
+    render(<Modal onCancel={onCancelMock} />);
+
+    const cancel = screen.getByTestId("modal-cancel-btn");
+    const backdrop = screen.getByTestId("modal-backdrop");
+
+    fireEvent.click(cancel);
+    fireEvent.click(backdrop);
+
+    expect(onCancelMock).toHaveBeenCalledTimes(2);
+  });
 });

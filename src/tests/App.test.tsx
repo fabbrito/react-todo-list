@@ -54,10 +54,16 @@ describe("App", () => {
     const items = await screen.findAllByText(/Id: /i);
     expect(items).toHaveLength(2);
   });
+
+  // TODO: Problems with dynamic data such as date and uuid
+  // it("Should take a snapshot after adding a new todo with 'Sample' as text", () => {
+  //   const { asFragment } = render(<App />);
+
+  //   fireEvent.change(screen.getByTestId("addtodo-textarea"), {
+  //     target: { value: "Sample" },
+  //   });
+  //   fireEvent.click(screen.getByTestId("addtodo-submit"));
+
+  //   expect(asFragment()).toMatchSnapshot();
+  // });
 });
-
-// it("Should take a snapshot", () => {
-//   const { asFragment } = render(<App />);
-
-//   expect(asFragment()).toMatchSnapshot();
-// });

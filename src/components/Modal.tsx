@@ -2,9 +2,9 @@ import React from "react";
 
 interface ModalProps {
   text?: string;
+  children?: React.ReactNode;
   onCancel?: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
   onConfirm?: React.MouseEventHandler<HTMLButtonElement>;
-  children?: React.ReactNode;
 }
 
 export const Modal: React.FC<ModalProps> = ({
