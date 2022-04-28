@@ -75,11 +75,13 @@ export const Toolbar: React.FC<Props> = ({
         className="checkbox"
         onChange={checkboxHandler}
         checked={isChecked}
+        data-testid="toolbar-checkbox"
       />
       <GarbageIcon
         id="icon-delete-all"
         className="garbage-icon"
         onClick={openModalToDelete}
+        data-testid="toolbar-delete-icon"
       />
       <input
         type="search"
@@ -87,6 +89,7 @@ export const Toolbar: React.FC<Props> = ({
         onChange={inputHandler}
         value={inputField}
         placeholder="Search in todos ..."
+        data-testid="toolbar-search-field"
       />
       {modalIsOpen && (
         <Modal onCancel={closeModalHandler} onConfirm={deleteAllHandler}>

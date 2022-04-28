@@ -38,9 +38,15 @@ export const AddTodo: React.FC<Props> = ({ updateTodos }) => {
           value={text ?? ""}
           className="textarea"
           maxLength={500}
+          data-testid="addtodo-textarea"
         />
         <div className="actions">
-          <input type="submit" value="Add" className="btn" />
+          <input
+            type="submit"
+            value="Add"
+            className="btn"
+            data-testid="addtodo-submit"
+          />
         </div>
       </form>
     </Card>
