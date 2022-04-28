@@ -59,3 +59,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 [Free Frontend - 91 Checkboxes CSS](https://freefrontend.com/css-checkboxes/)
 
 [Robinwieruch - Using a indeterminate React Checkbox](https://www.robinwieruch.de/react-checkbox-indeterminate/)
+
+[Testing local storage with testing library](https://javascript.plainenglish.io/testing-local-storage-with-testing-library-580f74e8805b)
+
+[Setting up a CI/CD workflow on GitHub Actions for a React App (with GitHub Pages and Codecov)](https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp)
