@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "./Modal";
-import { Backdrop } from "./Backdrop";
 // A SVG can be manipulated as a ReactComponent
 import { ReactComponent as GarbageIcon } from "../img/garbageIcon.svg";
 
@@ -43,7 +42,9 @@ export const Toolbar: React.FC<Props> = ({
     setModalIsOpen(false);
   };
 
-  const deleteHandler: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+  const deleteAllHandler: React.MouseEventHandler<HTMLButtonElement> = (
+    event
+  ) => {
     // Calls the passed function to delete the todo component with matching "id"
     setIsChecked(false);
     setModalIsOpen(false);
@@ -54,22 +55,32 @@ export const Toolbar: React.FC<Props> = ({
 
   // useEffect(() => {onCheckAll(isChecked)}, [isChecked]);
 
+  // const checkboxRef = useRef<HTMLInputElement>(null);
+  // useEffect(() => {
+  //   if (checkboxRef.current) checkboxRef.current.indeterminate = true;
+  // }, []);
+
   useEffect(() => {
     if (!clearSearch) return;
     setClearSearch(false);
     setInputField("");
-    searchFunction("");
-  }, [clearSearch, searchFunction]);
+    // searchFunction("");
+  }, [clearSearch]);
 
   return (
     <div className="toolbar-container">
       <input
+        id="checkbox-check-all"
         type="checkbox"
         className="checkbox"
         onChange={checkboxHandler}
         checked={isChecked}
       />
-      <GarbageIcon className="garbage-icon" onClick={openModalToDelete} />
+      <GarbageIcon
+        id="icon-delete-all"
+        className="garbage-icon"
+        onClick={openModalToDelete}
+      />
       <input
         type="search"
         className="inputField"
@@ -77,15 +88,13 @@ export const Toolbar: React.FC<Props> = ({
         value={inputField}
         placeholder="Search in todos ..."
       />
-
       {modalIsOpen && (
-        <Modal
-          text={"Delete all checked todos?"}
-          onCancel={closeModalHandler}
-          onConfirm={deleteHandler}
-        />
+        <Modal onCancel={closeModalHandler} onConfirm={deleteAllHandler}>
+          <p>
+            From the <b>VISIBLE</b> todos, <b>DELETE</b> all that are checked?
+          </p>
+        </Modal>
       )}
-      {modalIsOpen && <Backdrop onClickHandler={closeModalHandler} />}
     </div>
   );
 };

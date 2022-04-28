@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Modal } from "./Modal";
-import { Backdrop } from "./Backdrop";
 import { DateItem } from "./DateItem";
 import { Card } from "./Card";
 
@@ -22,10 +21,7 @@ interface Props {
 //   onDelete: (id: string) => void;
 // }
 
-export const TodoItem: React.FC<Props> = ({
-  todo,
-  updateTodos,
-}) => {
+export const TodoItem: React.FC<Props> = ({ todo, updateTodos }) => {
   const todoText: string = todo.text ?? `Id: ${todo.id}`;
 
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -66,21 +62,14 @@ export const TodoItem: React.FC<Props> = ({
       isVisible={todo.isVisible}
     >
       <h3>{todoText}</h3>
-      {/* <div className="actions">
-          <DateItem dateString={createdAt} />
-          <button className="btn" onClick={openModalToDelete}>
-            Delete
-          </button>
-        </div> */}
       <DateItem dateString={todo.createdAt} />
       {modalIsOpen && (
-        <Modal
-          text={`Delete "${todoText}"?`}
-          onCancel={closeModalHandler}
-          onConfirm={deleteHandler}
-        />
+        <Modal onCancel={closeModalHandler} onConfirm={deleteHandler}>
+          <p>
+            <b>DELETE</b> "{todoText}"?
+          </p>
+        </Modal>
       )}
-      {modalIsOpen && <Backdrop onClickHandler={closeModalHandler} />}
     </Card>
   );
 };
