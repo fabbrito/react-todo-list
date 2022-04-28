@@ -55,3 +55,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 [CodePen - React Fancy Cards With Delete Button](https://codepen.io/davidmellul/pen/oyopdx)
 
 [CSS { IRL } - Animating Underlines](https://css-irl.info/animating-underlines/)
+
+[Free Frontend - 91 Checkboxes CSS](https://freefrontend.com/css-checkboxes/)
+
+[Robinwieruch - Using a indeterminate React Checkbox](https://www.robinwieruch.de/react-checkbox-indeterminate/)
