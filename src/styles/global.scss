@@ -5,8 +5,8 @@
   box-sizing: border-box;
   outline: none;
   // border: none;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, "Roboto", Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -17,15 +17,26 @@ html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 body {
-  background-color: fade-out(mix(#8fd3f4, #84fab0), 0.7);
+  background-color: fade-out(
+    mix(#8fd3f4, #84fab0),
+    0.7
+  ); // rgba(138, 231, 210, 0.3)
+  // background-image: linear-gradient(to bottom, #84faaf33 0%, #8fd3f433 100%);
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input[type="text"], input[type="search"] {
+  font-size: 1rem;
 }
 
 input[type="search"] {
