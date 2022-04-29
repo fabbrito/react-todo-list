@@ -15,9 +15,9 @@ export const Toolbar: React.FC<Props> = ({
   onCheckAll = () => {},
 }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [inputField, setInputField] = useState<string>("");
+  const [searchText, setSearchText] = useState<string>("");
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [clearSearch, setClearSearch] = useState<boolean>(false);
+  const [emptySearch, setEmptySearch] = useState<boolean>(false);
 
   const checkboxHandler: React.ChangeEventHandler<HTMLInputElement> = (
     event
@@ -26,10 +26,10 @@ export const Toolbar: React.FC<Props> = ({
     setIsChecked(!isChecked);
   };
 
-  const inputHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    setInputField(event.target.value);
+  const inputSearchHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setSearchText(event.target.value);
     searchFunction(event.target.value);
-    if (clearSearch) setClearSearch(false);
+    if (emptySearch) setEmptySearch(false);
   };
 
   const openModalToDelete: React.MouseEventHandler<SVGSVGElement> = (event) => {
@@ -49,7 +49,7 @@ export const Toolbar: React.FC<Props> = ({
     setIsChecked(false);
     setModalIsOpen(false);
     onDeleteAll().then(() => {
-      setClearSearch(true);
+      setEmptySearch(true);
     });
   };
 
@@ -61,11 +61,11 @@ export const Toolbar: React.FC<Props> = ({
   // }, []);
 
   useEffect(() => {
-    if (!clearSearch) return;
-    setClearSearch(false);
-    setInputField("");
+    if (!emptySearch) return;
+    setEmptySearch(false);
+    setSearchText("");
     // searchFunction("");
-  }, [clearSearch]);
+  }, [emptySearch]);
 
   return (
     <div className="toolbar-container">
@@ -85,9 +85,9 @@ export const Toolbar: React.FC<Props> = ({
       />
       <input
         type="search"
-        className="inputField"
-        onChange={inputHandler}
-        value={inputField}
+        className="input-search"
+        onChange={inputSearchHandler}
+        value={searchText}
         placeholder="Search in todos ..."
         data-testid="toolbar-search-field"
       />
