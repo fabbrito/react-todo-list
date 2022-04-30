@@ -143,6 +143,35 @@ export const App: React.FC = () => {
   // Call "saveTodos" on every change to "todoItems"
   useEffect(saveTodos, [todoItems]);
 
+  // TODO: Change state from Todo[] to an object of the type{[id: string]: Omit<Todo, "id">}
+  // useEffect(() => {
+  //   type T = {
+  //     [id: string]: Omit<Todo, "id">;
+  //   };
+
+  //   const todoObj: T = todoItems
+  //     .map((_todo) => {
+  //       const { id, ...__todo } = _todo;
+  //       return { [_todo.id]: __todo };
+  //     })
+  //     .reduce((prev, curr) => {
+  //       return { ...prev, ...curr };
+  //     }, {});
+
+  //   console.log(todoObj);
+
+  //   const aTodo = todoItems[0];
+  //   const idForSearch = aTodo.id;
+
+  //   console.log(todoObj[idForSearch]);
+
+  //   console.log(Object.keys(todoObj).map((key, index) => {return {id: key, ...todoObj[key]}}));
+  // }, [todoItems]);
+
+  const scrollTop: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="app">
       <div className="top-container stick">
@@ -152,7 +181,7 @@ export const App: React.FC = () => {
           onDeleteAll={onDeleteAll}
         />
       </div>
-      <div className="container">
+      <div className="main-container">
         <div className="left-container">
           <h1>My Todos</h1>
           <div className="todos-container">
@@ -169,6 +198,11 @@ export const App: React.FC = () => {
           <AddTodo updateTodos={updateTodos} />
           {/* </div> */}
         </div>
+      </div>
+      <div className="scroll-top-container">
+        <button className="btn" onClick={scrollTop}>
+          <div className="chevron up"></div>
+        </button>
       </div>
     </div>
   );

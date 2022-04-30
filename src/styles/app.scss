@@ -22,7 +22,7 @@ h4 {
   }
 }
 
-.container {
+.main-container {
   max-width: 800px;
   margin: auto;
   display: flex;
@@ -53,7 +53,7 @@ h4 {
 
 .btn {
   font: inherit;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 4px;
   background-color: $main;
@@ -64,7 +64,8 @@ h4 {
   font-size: 1rem;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
   background-color: $main--alt;
   border-color: $main--alt;
   color: $secondary--alt;
@@ -75,7 +76,8 @@ h4 {
   color: $main;
 }
 
-.btn--alt:hover {
+.btn--alt:hover,
+.btn--alt:focus {
   background-color: $secondary--alt;
   color: $main--alt;
 }
@@ -101,7 +103,7 @@ h4 {
   margin-bottom: 1rem;
   position: relative;
 
-  &.hide {
+  &.hidden {
     display: none;
   }
 
@@ -199,8 +201,18 @@ h4 {
 
     .textarea {
       width: calc(350px - 2rem);
-      height: 75px;
+      min-height: 75px;
       border-color: $gray-90;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: box-shadow 250ms;
+      padding: 0.25rem;
+      resize: vertical;
+
+      &:hover,
+      &:focus,
+      &:active {
+        box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+      }
     }
   }
 
@@ -290,9 +302,47 @@ h4 {
   }
 }
 
+.scroll-top-container {
+  position: fixed;
+  bottom: 1vh;
+  right: 0;
+  z-index: $scroll-top-container-z-index;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.chevron {
+  border: solid $secondary;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+
+  &.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  &.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+
+  &.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+
+  &.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+}
+
 // ----------------------------------------
 @media (max-width: 800px) {
-  .container {
+  .main-container {
     align-items: center;
     flex-direction: column-reverse;
 
@@ -324,18 +374,20 @@ h4 {
     }
   }
 
-  .modal {
-    width: 350px;
-    left: calc(50% - 175px);
+  .modal-container {
+    .modal {
+      width: 350px;
+      left: calc(50% - 175px);
+    }
   }
 }
 
 // For mobile only
 @media only screen and (hover: none) and (pointer: coarse) {
   .card {
-    &.checked {
-      text-decoration-line: none;
-    }
+    // &.checked {
+    //   text-decoration-line: none;
+    // }
     .timestamp {
       opacity: 1;
     }

@@ -37,7 +37,7 @@ export const Card: React.FC<Props> = ({
   }, [checked]);
 
   return (
-    <div className={`card-container${!isVisible ? " hide" : ""}`}>
+    <div className={`card-container${!isVisible ? " hidden" : ""}`}>
       {hasCheckbox && (
         <input
           type="checkbox"
