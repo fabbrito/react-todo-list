@@ -5,7 +5,7 @@ $main--alt: darken($main, 10%);
 $secondary: hsl(0, 0%, 98%);
 $secondary--alt: darken($secondary, 5%);
 
-$outline-focus: hsl(0, 0%, 70%);
+$focus-color: rgba(0, 0, 0, 0.3);
 $disabled-input: hsl(0, 0%, 50%);
 
 $card-color: white;
@@ -15,6 +15,11 @@ $white: white;
 $gray: hsl(0, 0%, 50%);
 $gray-20: hsl(0, 0%, 20%);
 $gray-90: hsl(0, 0%, 90%);
+
+$body-background: fade-out(
+  mix(#8fd3f4, #84fab0),
+  0.7
+); // rgba(138, 231, 210, 0.3)
 
 $top-container-z-index: 20;
 $scroll-top-container-z-index: 10;

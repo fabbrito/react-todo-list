@@ -227,7 +227,7 @@ h4 {
       &:focus .close-icon,
       &:hover .close-icon,
       &:active .close-icon {
-        background-color: lighten($main-text, 30%);
+        background-color: $focus-color;
       }
     }
 
@@ -247,7 +247,7 @@ h4 {
       &:hover,
       &:focus,
       &:active {
-        border-color: $outline-focus;
+        border-color: $focus-color;
       }
     }
   }
@@ -288,8 +288,12 @@ h4 {
     &:active {
       .icon g,
       .icon path {
-        fill: lighten($main-text, 30%);
+        fill: $focus-color;
       }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
     }
   }
 
@@ -304,7 +308,7 @@ h4 {
     &:hover,
     &:focus,
     &:active {
-      border-color: $outline-focus;
+      border-color: $focus-color;
     }
   }
 }

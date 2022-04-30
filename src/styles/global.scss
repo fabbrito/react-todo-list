@@ -25,18 +25,10 @@ body {
 }
 
 body {
-  background-color: fade-out(
-    mix(#8fd3f4, #84fab0),
-    0.7
-  ); // rgba(138, 231, 210, 0.3)
+  background-color: $body-background;
   // background-image: linear-gradient(to bottom, #84faaf33 0%, #8fd3f433 100%);
   // background-repeat: no-repeat;
   // background-attachment: fixed;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 input[type="text"],
@@ -44,6 +36,7 @@ input[type="search"] {
   font-size: 1rem;
 }
 
+// ---------------------- INPUT SEARCH -------------------------
 input[type="search"] {
   padding: 0.2em 0.4em;
   border: 0.05rem;
@@ -82,6 +75,8 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 input[type="search"].dark::-webkit-search-cancel-button {
   filter: invert(1);
 }
+
+// ---------------------- INPUT CHECKBOX -------------------------
 
 input[type="checkbox"] {
   // Add if not using autoprefixer
@@ -127,12 +122,15 @@ input[type="checkbox"]:checked::before {
 }
 
 input[type="checkbox"]:focus {
-  outline: max(1px, 0.1em) solid $outline-focus;
+  outline: max(1px, 0.1em) solid $focus-color;
   outline-offset: max(1px, 0.1em);
 }
 
 input[type="checkbox"]:disabled {
-  --form-control-color: $disabled-input;
   color: $disabled-input;
   cursor: not-allowed;
+}
+
+input[type="checkbox"]:disabled::before {
+  background-color: $disabled-input;
 }
