@@ -234,16 +234,20 @@ h4 {
     .textarea {
       width: calc(350px - 2rem);
       min-height: 75px;
-      border-color: $gray-90;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      transition: box-shadow 250ms;
       padding: 0.25rem;
       resize: vertical;
+
+      border: 0.05rem;
+      border-style: solid;
+      border-radius: 0.15rem;
+      border-color: white;
+      transition: border-color 250ms;
 
       &:hover,
       &:focus,
       &:active {
-        box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+        border-color: $outline-focus;
       }
     }
   }
@@ -292,19 +296,15 @@ h4 {
   .input-search {
     width: calc(100% - 4rem);
     height: 40px;
-    border-radius: 0.25rem;
-    border: 0;
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    outline: none;
-    transition: outline 250ms;
-
-    // margin-right: 1rem;
+    border-color: white;
+    transition: border-color 250ms;
 
     &:hover,
     &:focus,
     &:active {
-      outline: max(1px, 0.1em) solid $outline-focus;
+      border-color: $outline-focus;
     }
   }
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { TodoItem, Todo } from "../components/TodoItem";
 import { AddTodo } from "../components/AddTodo";
 import { Toolbar } from "../components/Toolbar";
+import { ScrollTop } from "../components/ScrollTop"
 import { compareAsc } from "date-fns";
 import _debounce from "lodash/debounce";
 import "../styles/app.scss";
@@ -168,7 +169,7 @@ export const App: React.FC = () => {
   //   console.log(Object.keys(todoObj).map((key, index) => {return {id: key, ...todoObj[key]}}));
   // }, [todoItems]);
 
-  const scrollTop: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+  const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -199,11 +200,7 @@ export const App: React.FC = () => {
           {/* </div> */}
         </div>
       </div>
-      <div className="scroll-top-container">
-        <button className="btn" onClick={scrollTop}>
-          <div className="chevron up"></div>
-        </button>
-      </div>
+      <ScrollTop scrollTop={scrollTop}/>
     </div>
   );
 };
