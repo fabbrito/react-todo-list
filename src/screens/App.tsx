@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { TodoItem, Todo } from "../components/TodoItem";
 import { AddTodo } from "../components/AddTodo";
 import { Toolbar } from "../components/Toolbar";
-import { ScrollTop } from "../components/ScrollTop"
+import { ScrollTop } from "../components/ScrollTop";
 import { compareAsc } from "date-fns";
 import _debounce from "lodash/debounce";
 import "../styles/app.scss";
@@ -169,9 +169,32 @@ export const App: React.FC = () => {
   //   console.log(Object.keys(todoObj).map((key, index) => {return {id: key, ...todoObj[key]}}));
   // }, [todoItems]);
 
-  const scrollTop = () => {
+  const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
+
+  const scrollToTheTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const debouncedScrollFunction = _debounce(
+    () => {
+      if (window.scrollY > 300) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    },
+    200,
+    { maxWait: 400 }
+  );
+
+  const debouncedScroll = useCallback(
+    () => debouncedScrollFunction(),
+    [debouncedScrollFunction]
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", debouncedScroll);
+  }, [debouncedScroll]);
 
   return (
     <div className="app">
@@ -200,7 +223,10 @@ export const App: React.FC = () => {
           {/* </div> */}
         </div>
       </div>
-      <ScrollTop scrollTop={scrollTop}/>
+      <ScrollTop
+        scrollToTheTop={scrollToTheTop}
+        showScrollButton={showScrollButton}
+      />
     </div>
   );
 };

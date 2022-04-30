@@ -32,17 +32,17 @@ h4 {
 
   padding-top: 50px;
 
-  .right-container {
-    min-width: calc(350px + 2rem);
-    padding-left: 2rem;
-  }
-
   .left-container {
     min-width: calc(350px + 2rem);
 
     h1 {
       padding-left: 2rem;
     }
+  }
+
+  .right-container {
+    min-width: calc(350px + 2rem);
+    padding-left: 2rem;
   }
 }
 
@@ -237,6 +237,7 @@ h4 {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       padding: 0.25rem;
       resize: vertical;
+      font-size: 1rem;
 
       border: 0.05rem;
       border-style: solid;
@@ -356,9 +357,11 @@ h4 {
   bottom: 1vh;
   right: 0;
   z-index: $scroll-top-container-z-index;
+  transform: translateY(0);
+  transition: transform 250ms ease-in-out;
 
   &.hidden {
-    display: none;
+    transform: translateY(100px);
   }
 }
 
