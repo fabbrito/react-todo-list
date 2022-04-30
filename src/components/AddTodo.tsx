@@ -33,7 +33,7 @@ export const AddTodo: React.FC<Props> = ({ updateTodos }) => {
     <Card rounded>
       <form onSubmit={submitHandler}>
         <textarea
-          placeholder="Add new Todo here."
+          placeholder="Add new Todo here..."
           onChange={onTextareaChange}
           value={text ?? ""}
           className="textarea"

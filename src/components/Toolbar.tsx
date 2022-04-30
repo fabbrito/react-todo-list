@@ -26,13 +26,17 @@ export const Toolbar: React.FC<Props> = ({
     setIsChecked(!isChecked);
   };
 
-  const inputSearchHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+  const inputSearchHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
     setSearchText(event.target.value);
     searchFunction(event.target.value);
     if (emptySearch) setEmptySearch(false);
   };
 
-  const openModalToDelete: React.MouseEventHandler<SVGSVGElement> = (event) => {
+  const openModalToDelete: React.MouseEventHandler<HTMLButtonElement> = (
+    event
+  ) => {
     setModalIsOpen(true);
   };
 
@@ -77,12 +81,13 @@ export const Toolbar: React.FC<Props> = ({
         checked={isChecked}
         data-testid="toolbar-checkbox"
       />
-      <GarbageIcon
-        id="icon-delete-all"
-        className="garbage-icon"
+      <button
+        className="delete-all-btn"
         onClick={openModalToDelete}
         data-testid="toolbar-delete-icon"
-      />
+      >
+        <GarbageIcon id="icon-delete-all" className="icon" />
+      </button>
       <input
         type="search"
         className="input-search"

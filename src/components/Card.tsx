@@ -53,9 +53,9 @@ export const Card: React.FC<Props> = ({
       >
         {children}
         {hasDelete && (
-          <span className="delete-btn" onClick={onClickDelete}>
-            &times;
-          </span>
+          <button className="delete-btn" onClick={onClickDelete}>
+            <div className="close-icon">{/* &times; */}</div>
+          </button>
         )}
       </div>
     </div>

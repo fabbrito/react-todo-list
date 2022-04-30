@@ -55,7 +55,7 @@ h4 {
   font: inherit;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   background-color: $main;
   color: $secondary;
   border: 1px solid $main;
@@ -65,7 +65,8 @@ h4 {
 }
 
 .btn:hover,
-.btn:focus {
+.btn:focus,
+.btn:active {
   background-color: $main--alt;
   border-color: $main--alt;
   color: $secondary--alt;
@@ -77,7 +78,8 @@ h4 {
 }
 
 .btn--alt:hover,
-.btn--alt:focus {
+.btn--alt:focus,
+.btn--alt:active {
   background-color: $secondary--alt;
   color: $main--alt;
 }
@@ -116,7 +118,7 @@ h4 {
     float: left;
     width: 350px;
     min-height: 150px;
-    background: white;
+    background: $card-color;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: box-shadow 250ms;
     padding: 1rem;
@@ -127,7 +129,7 @@ h4 {
     }
 
     &.rounded {
-      border-radius: 5px;
+      border-radius: 0.25rem;
     }
 
     &.gradient {
@@ -178,25 +180,55 @@ h4 {
       color: lighten($main-text, 20%);
       position: absolute;
       left: 7px;
-      bottom: 2px;
+      bottom: 7px;
       transition: opacity 300ms ease-in-out;
     }
 
     .delete-btn {
-      cursor: pointer;
-      font-weight: bolder;
-      font-size: 1.2em;
       position: absolute;
-      right: 7px;
-      top: 2px;
+      right: 0.4rem;
+      top: 0.4rem;
+      border-radius: 0.15rem;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      background: none;
 
-      // Make it not selectable
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+      .close-icon {
+        width: 0.75rem;
+        height: 0.75rem;
+
+        background-color: $main-text;
+        transform-origin: bottom left;
+        clip-path: polygon(
+          20% 0%,
+          0% 20%,
+          30% 50%,
+          0% 80%,
+          20% 100%,
+          50% 70%,
+          80% 100%,
+          100% 80%,
+          70% 50%,
+          100% 20%,
+          80% 0%,
+          50% 30%
+        );
+
+        // Make text inside not selectable
+        // -webkit-touch-callout: none;
+        // -webkit-user-select: none;
+        // -khtml-user-select: none;
+        // -moz-user-select: none;
+        // -ms-user-select: none;
+        // user-select: none;
+      }
+
+      &:focus .close-icon,
+      &:hover .close-icon,
+      &:active .close-icon {
+        background-color: lighten($main-text, 30%);
+      }
     }
 
     .textarea {
@@ -228,38 +260,51 @@ h4 {
   justify-content: space-between;
   align-items: center;
   max-width: calc(700px + 4rem);
+  height: 3rem;
 
   .checkbox {
     cursor: pointer;
     transform: scale(1.5);
   }
 
-  .garbage-icon {
+  .delete-all-btn {
+    padding: 0;
+    border: none;
+    background: none;
+    color: $main-text;
     cursor: pointer;
-    height: 50px;
-    aspect-ratio: 1/1;
-    transform: scale(1);
-  }
 
-  .garbage-icon g,
-  path {
-    fill: $main-text;
+    .icon g,
+    .icon path {
+      fill: $main-text;
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      .icon g,
+      .icon path {
+        fill: lighten($main-text, 30%);
+      }
+    }
   }
 
   .input-search {
     width: calc(100% - 4rem);
     height: 40px;
-    border-radius: 5px;
+    border-radius: 0.25rem;
     border: 0;
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.25s;
+    outline: none;
+    transition: outline 250ms;
+
     // margin-right: 1rem;
 
     &:hover,
     &:focus,
     &:active {
-      box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+      outline: max(1px, 0.1em) solid $outline-focus;
     }
   }
 }
@@ -289,8 +334,8 @@ h4 {
 
   .modal {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    background-color: $modal;
+    border-radius: 0.25rem;
+    background-color: $modal-color;
     padding: 1rem;
     padding-bottom: 2rem;
     text-align: center;
@@ -368,8 +413,8 @@ h4 {
 
     .checkbox {
       position: absolute;
-      left: 7px;
-      top: 7px;
+      left: 0.4rem;
+      top: 0.4rem;
       z-index: 1;
     }
   }
