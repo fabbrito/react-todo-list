@@ -65,3 +65,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 [Testing local storage with testing library](https://javascript.plainenglish.io/testing-local-storage-with-testing-library-580f74e8805b)
 
 [Setting up a CI/CD workflow on GitHub Actions for a React App (with GitHub Pages and Codecov)](https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp)
+
+[The Focus-Indicated Pseudo-class: :focus-visible](https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo)
