@@ -1,3 +1,6 @@
+## LocalStorage items test array
+
+```json
 [
   {
     "id": "e703afd8-a298-4ddb-b049-a2df6f09e45e",
@@ -35,3 +38,4 @@
     "isVisible": true
   }
 ]
+```
