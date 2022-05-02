@@ -4,7 +4,8 @@ import { AddTodo } from "../components/AddTodo";
 import { Toolbar } from "../components/Toolbar";
 import { ScrollTop } from "../components/ScrollTop";
 import { compareAsc } from "date-fns";
-import _debounce from "lodash/debounce";
+import debounce from "lodash/debounce";
+import throttle from "lodash/throttle";
 import "../styles/app.scss";
 
 // import { v4 as uuidv4 } from "uuid";
@@ -74,7 +75,7 @@ export const App: React.FC = () => {
   };
 
   // Using _debounce from lodash to debounce input for 300ms and call the search function every 1s.
-  const debouncedSearchFunction = _debounce(
+  const debouncedSearchFunction = debounce(
     (text: string) => {
       setTodoItems(
         [...todoItems].map((_todo) => {
@@ -176,26 +177,18 @@ export const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const debouncedScrollFunction = _debounce(
-    () => {
-      if (window.scrollY > 300) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
-    },
-    200,
-    { maxWait: 400 }
-  );
-
-  const debouncedScroll = useCallback(
-    () => debouncedScrollFunction(),
-    [debouncedScrollFunction]
-  );
-
+  // Add a scroll event listener to the window with a throttled function that sets showScrollButton depending on the pageYOffset
   useEffect(() => {
-    window.addEventListener("scroll", debouncedScroll);
-  }, [debouncedScroll]);
+    const throttledScroll = throttle(() => {
+      if (window.pageYOffset > 300) setShowScrollButton(true);
+      else if (window.pageYOffset <= 300) setShowScrollButton(false);
+    }, 500);
+
+    window.addEventListener("scroll", throttledScroll);
+
+    // When unmounting
+    return () => window.removeEventListener("scroll", throttledScroll);
+  }, []);
 
   return (
     <div className="app">
@@ -210,7 +203,7 @@ export const App: React.FC = () => {
         <div className="left-container">
           <h1>My Todos</h1>
           <div className="todos-container">
-            {todoItems?.map((todo) => {
+            {todoItems.map((todo) => {
               return (
                 <TodoItem key={todo.id} todo={todo} updateTodos={updateTodos} />
               );
