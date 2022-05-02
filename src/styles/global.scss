@@ -31,6 +31,11 @@ body {
   // background-attachment: fixed;
 }
 
+// TODO: Change focus behaviour so that it only shows highlights when using the keyboard
+// :focus-visible  {
+//   outline: 3px solid #ffbf47;
+// }
+
 input[type="text"],
 input[type="search"] {
   font-size: 1rem;
@@ -56,6 +61,7 @@ input[type="search"].light {
 }
 
 input[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
   -webkit-appearance: none;
   height: 1em;
   width: 1em;

@@ -145,29 +145,30 @@ export const App: React.FC = () => {
   useEffect(saveTodos, [todoItems]);
 
   // TODO: Change state from Todo[] to an object of the type{[id: string]: Omit<Todo, "id">}
-  // useEffect(() => {
-  //   type T = {
-  //     [id: string]: Omit<Todo, "id">;
-  //   };
 
-  //   const todoObj: T = todoItems
-  //     .map((_todo) => {
-  //       const { id, ...__todo } = _todo;
-  //       return { [_todo.id]: __todo };
-  //     })
-  //     .reduce((prev, curr) => {
-  //       return { ...prev, ...curr };
-  //     }, {});
+  /* useEffect(() => {
+    type T = {
+      [id: string]: Omit<Todo, "id">;
+    };
 
-  //   console.log(todoObj);
+    const todoObj: T = todoItems
+      .map((_todo) => {
+        const { id, ...__todo } = _todo;
+        return { [_todo.id]: __todo };
+      })
+      .reduce((prev, curr) => {
+        return { ...prev, ...curr };
+      }, {});
 
-  //   const aTodo = todoItems[0];
-  //   const idForSearch = aTodo.id;
+    console.log(todoObj);
 
-  //   console.log(todoObj[idForSearch]);
+    const aTodo = todoItems[0];
+    const idForSearch = aTodo.id;
 
-  //   console.log(Object.keys(todoObj).map((key, index) => {return {id: key, ...todoObj[key]}}));
-  // }, [todoItems]);
+    console.log(todoObj[idForSearch]);
+
+    console.log(Object.keys(todoObj).map((key, index) => {return {id: key, ...todoObj[key]}}));
+  }, [todoItems]); */
 
   const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
 
