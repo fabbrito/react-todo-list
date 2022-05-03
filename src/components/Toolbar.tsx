@@ -86,7 +86,11 @@ export const Toolbar: React.FC<Props> = ({
         onClick={openModalToDelete}
         data-testid="toolbar-delete-icon"
       >
-        <GarbageIcon id="icon-delete-all" className="icon" />
+        <GarbageIcon
+          id="icon-delete-all"
+          className="icon"
+          title="Delete all icon"
+        />
       </button>
       <input
         type="search"
