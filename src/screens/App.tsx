@@ -23,8 +23,8 @@ import "../styles/app.scss";
 
 type Todos = Todo[];
 
+// Returns a sorted by date list, with newer dates at the beginning
 const sortByDate = (_items: Todos): Todos => {
-  // Since
   return _items.sort((a, b) => {
     return compareAsc(new Date(b.createdAt), new Date(a.createdAt));
   });
@@ -102,7 +102,7 @@ export const App: React.FC = () => {
   // "useCallback" is used so that the debounced search function is memoized for each set of "todoItems",
   // which means that a cached version of "debouncedSearch" is used until a change occurs with "todoItems".
   const debouncedSearch = useCallback(
-    (text) => debouncedSearchFunction(text),
+    (text: string) => debouncedSearchFunction(text),
     [debouncedSearchFunction]
   );
 
@@ -146,7 +146,6 @@ export const App: React.FC = () => {
   useEffect(saveTodos, [todoItems]);
 
   // TODO: Change state from Todo[] to an object of the type{[id: string]: Omit<Todo, "id">}
-
   /* useEffect(() => {
     type T = {
       [id: string]: Omit<Todo, "id">;
@@ -168,7 +167,11 @@ export const App: React.FC = () => {
 
     console.log(todoObj[idForSearch]);
 
-    console.log(Object.keys(todoObj).map((key, index) => {return {id: key, ...todoObj[key]}}));
+    const reconstructed = Object.keys(todoObj).map((key, index) => {
+      return { id: key, ...todoObj[key] };
+    });
+    console.log(reconstructed);
+    console.log(todoItems);
   }, [todoItems]); */
 
   const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
@@ -177,7 +180,8 @@ export const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Add a scroll event listener to the window with a throttled function that sets showScrollButton depending on the pageYOffset
+  // Add a scroll event listener to the window with a throttled function that sets showScrollButton
+  // depending on the pageYOffset
   useEffect(() => {
     const throttledScroll = throttle(() => {
       if (window.pageYOffset > 300) setShowScrollButton(true);
