@@ -7,10 +7,7 @@ interface Props {
   formatToPTBR?: boolean;
 }
 
-export const DateItem: React.FC<Props> = ({
-  dateString,
-  formatToPTBR = true,
-}) => {
+export const DateItem: React.FC<Props> = ({ dateString, formatToPTBR = true }) => {
   // const dateString = date.toISOString();
   const dateISO = parseISO(dateString);
   return (

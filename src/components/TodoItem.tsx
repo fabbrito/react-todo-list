@@ -26,15 +26,11 @@ export const TodoItem: React.FC<Props> = ({ todo, updateTodos }) => {
 
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
-  const openModalToDelete: React.MouseEventHandler<HTMLButtonElement> = (
-    event
-  ) => {
+  const openModalToDelete: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     setModalIsOpen(true);
   };
 
-  const closeModalHandler: React.MouseEventHandler<
-    HTMLDivElement | HTMLButtonElement
-  > = (event) => {
+  const closeModalHandler: React.MouseEventHandler<HTMLDivElement | HTMLButtonElement> = (event) => {
     setModalIsOpen(false);
   };
 
@@ -45,10 +41,7 @@ export const TodoItem: React.FC<Props> = ({ todo, updateTodos }) => {
   };
 
   const onCheckboxToggle = (isChecked: boolean) => {
-    // event.stopPropagation();
-    let _newTodo = { ...todo };
-    _newTodo.checked = isChecked;
-    updateTodos("update", _newTodo);
+    updateTodos("update", { ...todo, checked: isChecked });
   };
 
   return (

@@ -23,9 +23,7 @@ export const AddTodo: React.FC<Props> = ({ updateTodos }) => {
     setText(null);
   };
 
-  const onTextareaChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
-    event
-  ) => {
+  const onTextareaChange: React.ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     setText(event.target.value);
   };
 
@@ -41,12 +39,7 @@ export const AddTodo: React.FC<Props> = ({ updateTodos }) => {
           data-testid="addtodo-textarea"
         />
         <div className="actions">
-          <input
-            type="submit"
-            value="Add"
-            className="btn"
-            data-testid="addtodo-submit"
-          />
+          <input type="submit" value="Add" className="btn" data-testid="addtodo-submit" />
         </div>
       </form>
     </Card>

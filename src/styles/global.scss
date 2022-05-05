@@ -9,8 +9,8 @@
 
 * {
   outline: none;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", Oxygen, Ubuntu, Cantarell, "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -66,8 +66,7 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 1em;
   width: 1em;
   border-radius: 50em;
-  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg)
-    no-repeat 50% 50%;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
   background-size: contain;
   opacity: 0;
   pointer-events: none;

@@ -39,17 +39,12 @@ export const Card: React.FC<Props> = ({
   return (
     <div className={`card-container${!isVisible ? " hidden" : ""}`}>
       {hasCheckbox && (
-        <input
-          type="checkbox"
-          className="checkbox"
-          checked={checkboxState}
-          onChange={onCheckboxChange}
-        />
+        <input type="checkbox" className="checkbox" checked={checkboxState} onChange={onCheckboxChange} />
       )}
       <div
-        className={`card${rounded ? " rounded" : ""}${
-          hasGradient ? ` gradient gradient-${gradient ?? 0}` : ""
-        }${checked ? " checked" : ""}`}
+        className={`card${rounded ? " rounded" : ""}${hasGradient ? ` gradient gradient-${gradient ?? 0}` : ""}${
+          checked ? " checked" : ""
+        }`}
       >
         {children}
         {hasDelete && (
