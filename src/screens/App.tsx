@@ -8,19 +8,6 @@ import debounce from "lodash/debounce";
 import throttle from "lodash/throttle";
 import "../styles/app.scss";
 
-// import { v4 as uuidv4 } from "uuid";
-// const todosArray: (string | null)[] = [
-//   "Learn React!",
-//   "Learn Typescript!",
-//   "Explore full Typescript courses! Now on YouTube!",
-//   null,
-// ];
-
-// const _date = new Date();
-// const todosArrayOfObj: Todos = todosArray.map((text) => {
-//   return { id: uuidv4(), text, checked: false, createdAt: _date.toISOString() };
-// });
-
 type Todos = Todo[];
 
 // Returns a sorted by date list, with newer dates at the beginning
@@ -82,14 +69,10 @@ export const App: React.FC = () => {
           let isVisible: boolean;
           if (_todo.text === null) {
             // if text is null, searchs using a new string "Id: ${id}"
-            isVisible = "Id :"
-              .concat(_todo.id)
-              .toLowerCase()
-              .includes(text.toLowerCase());
+            isVisible = "Id :".concat(_todo.id).toLowerCase().includes(text.toLowerCase());
           } else {
-            isVisible =
-              _todo.id.toLowerCase().includes(text.toLowerCase()) ||
-              _todo.text.toLowerCase().includes(text.toLowerCase());
+            // _todo.id.toLowerCase().includes(text.toLowerCase()) ||
+            isVisible = _todo.text.toLowerCase().includes(text.toLowerCase());
           }
           return { ..._todo, isVisible };
         })
@@ -101,10 +84,7 @@ export const App: React.FC = () => {
 
   // "useCallback" is used so that the debounced search function is memoized for each set of "todoItems",
   // which means that a cached version of "debouncedSearch" is used until a change occurs with "todoItems".
-  const debouncedSearch = useCallback(
-    (text: string) => debouncedSearchFunction(text),
-    [debouncedSearchFunction]
-  );
+  const debouncedSearch = useCallback((text: string) => debouncedSearchFunction(text), [debouncedSearchFunction]);
 
   // Change "checked" property of all visible items
   const onCheckAll = (isChecked: boolean) => {
@@ -197,20 +177,14 @@ export const App: React.FC = () => {
   return (
     <div className="app">
       <div className="top-container stick">
-        <Toolbar
-          searchFunction={debouncedSearch}
-          onCheckAll={onCheckAll}
-          onDeleteAll={onDeleteAll}
-        />
+        <Toolbar searchFunction={debouncedSearch} onCheckAll={onCheckAll} onDeleteAll={onDeleteAll} />
       </div>
       <div className="main-container">
         <div className="left-container">
           <h1>My Todos</h1>
           <div className="todos-container">
             {todoItems.map((todo) => {
-              return (
-                <TodoItem key={todo.id} todo={todo} updateTodos={updateTodos} />
-              );
+              return <TodoItem key={todo.id} todo={todo} updateTodos={updateTodos} />;
             })}
           </div>
         </div>
@@ -221,10 +195,7 @@ export const App: React.FC = () => {
           {/* </div> */}
         </div>
       </div>
-      <ScrollTop
-        scrollToTheTop={scrollToTheTop}
-        showScrollButton={showScrollButton}
-      />
+      <ScrollTop scrollToTheTop={scrollToTheTop} showScrollButton={showScrollButton} />
     </div>
   );
 };
