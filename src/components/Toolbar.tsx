@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal } from "./Modal";
 // A SVG can be manipulated as a ReactComponent
 import { ReactComponent as GarbageIcon } from "../img/garbageIcon.svg";
@@ -17,59 +17,52 @@ export const Toolbar: React.FC<Props> = ({
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>("");
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [emptySearch, setEmptySearch] = useState<boolean>(false);
+  // const [emptySearch, setEmptySearch] = useState<boolean>(false);
 
-  const checkboxHandler: React.ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
+  const checkboxHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     onCheckAll(!isChecked);
     setIsChecked(!isChecked);
   };
 
-  const inputSearchHandler: React.ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
+  const inputSearchHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setSearchText(event.target.value);
     searchFunction(event.target.value);
-    if (emptySearch) setEmptySearch(false);
+    // if (emptySearch) setEmptySearch(false);
   };
 
-  const openModalToDelete: React.MouseEventHandler<HTMLButtonElement> = (
-    event
-  ) => {
+  const openModalToDelete: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     setModalIsOpen(true);
   };
 
-  const closeModalHandler: React.MouseEventHandler<
-    HTMLDivElement | HTMLButtonElement
-  > = (event) => {
+  const closeModalHandler: React.MouseEventHandler<HTMLDivElement | HTMLButtonElement> = (event) => {
     setModalIsOpen(false);
   };
 
-  const deleteAllHandler: React.MouseEventHandler<HTMLButtonElement> = (
-    event
-  ) => {
-    // Calls the passed function to delete the todo component with matching "id"
+  const deleteAllHandler: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    // Change local component states to false
     setIsChecked(false);
     setModalIsOpen(false);
+    // Calls "onDeleteAll", which will remove all visible checked items, then clears the search
     onDeleteAll().then(() => {
-      setEmptySearch(true);
+      setSearchText("");
     });
   };
 
   // useEffect(() => {onCheckAll(isChecked)}, [isChecked]);
-
-  // const checkboxRef = useRef<HTMLInputElement>(null);
-  // useEffect(() => {
-  //   if (checkboxRef.current) checkboxRef.current.indeterminate = true;
-  // }, []);
-
+  // TODO: indeterminate state for checkbox
+  /* const checkboxRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    if (!emptySearch) return;
-    setEmptySearch(false);
-    setSearchText("");
-    // searchFunction("");
-  }, [emptySearch]);
+    if (checkboxRef.current) {
+      checkboxRef.current.indeterminate = true;
+    }
+  }, []); */
+
+  // useEffect(() => {
+  // if (!emptySearch) return;
+  // setEmptySearch(false);
+  // setSearchText("");
+  // searchFunction("");
+  // }, [emptySearch]);
 
   return (
     <div className="toolbar-container">
@@ -81,16 +74,8 @@ export const Toolbar: React.FC<Props> = ({
         checked={isChecked}
         data-testid="toolbar-checkbox"
       />
-      <button
-        className="delete-all-btn"
-        onClick={openModalToDelete}
-        data-testid="toolbar-delete-icon"
-      >
-        <GarbageIcon
-          id="icon-delete-all"
-          className="icon"
-          title="Delete all icon"
-        />
+      <button className="delete-all-btn" onClick={openModalToDelete} data-testid="toolbar-delete-icon">
+        <GarbageIcon id="icon-delete-all" className="icon" title="Delete all icon" />
       </button>
       <input
         type="search"
