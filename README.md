@@ -1,6 +1,60 @@
-# Getting Started with Create React App
+# Simple TO-DO list with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Single Page Application created using React JS that implements a simple TO-DO(tasks) list with persistent data (by Browser Local Storage).
+
+---
+
+## Features:
+
+### Toolbar
+- Always on the top of the page.
+- Check all option (checkbox).
+- Delete all visible and checked (icon).
+- Search bar with debounced input.
+
+### TO-DO cards
+- Checkbox for deletion and emphasis.
+- Delete button for each card.
+- Timestamp on mouse hover.
+
+### Add TO-DO
+- Textarea with a maximum of 500 chars.
+- For testing purposes, an empty todo can be added: With an empty string or with its "uuid" as text (only if no changes are detected on the textarea field).
+
+### Extras
+- All delete functions opens a modal to confirm deletion. The modal closes, without deletion, on clicking the backdrop or the Cancel button.
+- Button to return to the top of the page. Only visible after scroll reaches: `window.pageYOffset > 300`.
+- CSS changes for small screens:
+  - Design changes to vertically stacked, with the "Add to-do" functionality at the top.
+  - Card specific checkbox is overlaid on the top left of the card.
+
+---
+
+## References and Inspirations:
+
+[How to Use localStorage with React Hooks to Set and Get Items](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/)
+
+[SASS Functions - w3schools](https://www.w3schools.com/sass/sass_functions_color.php)
+
+[CodePen - React Fancy Cards With Delete Button](https://codepen.io/davidmellul/pen/oyopdx)
+
+[CSS { IRL } - Animating Underlines](https://css-irl.info/animating-underlines/)
+
+[Free Frontend - 91 Checkboxes CSS](https://freefrontend.com/css-checkboxes/)
+
+[Pure CSS Custom Checkbox Style](https://moderncss.dev/pure-css-custom-checkbox-style/#custom-checkbox-style)
+
+[Robinwieruch - Using a indeterminate React Checkbox](https://www.robinwieruch.de/react-checkbox-indeterminate/)
+
+[Testing local storage with testing library](https://javascript.plainenglish.io/testing-local-storage-with-testing-library-580f74e8805b)
+
+[Setting up a CI/CD workflow on GitHub Actions for a React App (with GitHub Pages and Codecov)](https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp)
+
+[The Focus-Indicated Pseudo-class: :focus-visible](https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo)
+
+[Paper icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/paper)
+
+---
 
 ## Available Scripts
 
@@ -46,24 +100,3 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 
-## Check refs:
-
-[How to Use localStorage with React Hooks to Set and Get Items](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/)
-
-[SASS Functions - w3schools](https://www.w3schools.com/sass/sass_functions_color.php)
-
-[CodePen - React Fancy Cards With Delete Button](https://codepen.io/davidmellul/pen/oyopdx)
-
-[CSS { IRL } - Animating Underlines](https://css-irl.info/animating-underlines/)
-
-[Free Frontend - 91 Checkboxes CSS](https://freefrontend.com/css-checkboxes/)
-
-[Pure CSS Custom Checkbox Style](https://moderncss.dev/pure-css-custom-checkbox-style/#custom-checkbox-style)
-
-[Robinwieruch - Using a indeterminate React Checkbox](https://www.robinwieruch.de/react-checkbox-indeterminate/)
-
-[Testing local storage with testing library](https://javascript.plainenglish.io/testing-local-storage-with-testing-library-580f74e8805b)
-
-[Setting up a CI/CD workflow on GitHub Actions for a React App (with GitHub Pages and Codecov)](https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp)
-
-[The Focus-Indicated Pseudo-class: :focus-visible](https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo)
