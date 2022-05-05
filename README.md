@@ -1,6 +1,8 @@
 # Simple TO-DO list with React
 
-A Single Page Application created using React JS that implements a simple TO-DO(tasks) list with persistent data (by Browser Local Storage).
+A Single Page Application that implements a simple TO-DO(tasks) list with persistent data (by Browser Local Storage).
+
+Created using React and Typescript, plus a few extra libraries: _lodash/debounce_, _uuid_, _date-fns_ and _SASS_.
 
 ## Features:
 
