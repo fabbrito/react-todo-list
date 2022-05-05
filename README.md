@@ -2,8 +2,6 @@
 
 A Single Page Application created using React JS that implements a simple TO-DO(tasks) list with persistent data (by Browser Local Storage).
 
----
-
 ## Features:
 
 ### Toolbar
@@ -28,8 +26,6 @@ A Single Page Application created using React JS that implements a simple TO-DO(
   - Design changes to vertically stacked, with the "Add to-do" functionality at the top.
   - Card specific checkbox is overlaid on the top left of the card.
 
----
-
 ## References and Inspirations:
 
 [How to Use localStorage with React Hooks to Set and Get Items](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/)
@@ -53,8 +49,6 @@ A Single Page Application created using React JS that implements a simple TO-DO(
 [The Focus-Indicated Pseudo-class: :focus-visible](https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo)
 
 [Paper icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/paper)
-
----
 
 ## Available Scripts
 
