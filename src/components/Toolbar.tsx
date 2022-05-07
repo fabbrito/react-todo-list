@@ -82,7 +82,7 @@ export const Toolbar: React.FC<Props> = ({
         className="input-search"
         onChange={inputSearchHandler}
         value={searchText}
-        placeholder="Search in todos ..."
+        placeholder="Search in TO-DOs ..."
         data-testid="toolbar-search-field"
       />
       {modalIsOpen && (
