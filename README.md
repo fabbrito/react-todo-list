@@ -52,7 +52,7 @@ Created using React and Typescript, plus a few extra libraries: _lodash/debounce
 
 [Paper icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/paper)
 
-## Available Scripts
+<!-- ## Available Scripts
 
 In the project directory, you can run:
 
@@ -95,4 +95,4 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-
+ -->
