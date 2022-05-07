@@ -13,11 +13,11 @@ describe("App", () => {
     });
   });
 
-  it("Should have 'My Todos' and 'Add Todos' on screen", () => {
+  it("Should have 'My TO-DOs' and 'Add TO-DOs' on screen", () => {
     render(<App />);
 
-    expect(screen.getByText(/My Todos/i)).toBeInTheDocument();
-    expect(screen.getByText(/Add Todos/i)).toBeInTheDocument();
+    expect(screen.getByText(/My TO-DOs/i)).toBeInTheDocument();
+    expect(screen.getByText(/Add TO-DOs/i)).toBeInTheDocument();
   });
 
   it("Should call localStorage getItem on render", () => {
