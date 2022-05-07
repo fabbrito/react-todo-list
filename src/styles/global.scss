@@ -36,6 +36,19 @@ body {
 //   outline: 3px solid #ffbf47;
 // }
 
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
+}
+
+// ---------------------- INPUT -------------------------
+
 input[type="text"],
 input[type="search"] {
   font-size: 1rem;
