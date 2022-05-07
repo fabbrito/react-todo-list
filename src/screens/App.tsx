@@ -176,12 +176,12 @@ export const App: React.FC = () => {
 
   return (
     <div className="app">
-      <div className="top-container stick">
+      <header className="top-container stick">
         <Toolbar searchFunction={debouncedSearch} onCheckAll={onCheckAll} onDeleteAll={onDeleteAll} />
-      </div>
+      </header>
       <div className="main-container">
         <div className="left-container">
-          <h1>My Todos</h1>
+          <h1>My TO-DOs</h1>
           <div className="todos-container">
             {todoItems.map((todo) => {
               return <TodoItem key={todo.id} todo={todo} updateTodos={updateTodos} />;
@@ -189,12 +189,20 @@ export const App: React.FC = () => {
           </div>
         </div>
         <div className="right-container">
-          {/* <div className="stick-top"> */}
-          <h1>Add Todos</h1>
+          <h1>Add TO-DOs</h1>
           <AddTodo updateTodos={updateTodos} />
-          {/* </div> */}
         </div>
       </div>
+      {/* <footer className="app-footer">
+        <a href="https://github.com/fabbrito/react-todo-list" target="_blank" rel="noopener noreferrer">
+          Source Code
+        </a>
+        <picture>
+          <source media="(min-width:650px)" srcSet="/logo512.png" />
+          <source media="(min-width:465px)" srcSet="/logo256.png" />
+          <img src="/logo128.png" alt="Logo - Simple TO-DOs list" className="img-logo" />
+        </picture>
+      </footer> */}
       <ScrollTop scrollToTheTop={scrollToTheTop} showScrollButton={showScrollButton} />
     </div>
   );
