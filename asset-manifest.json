@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/fabbrito/react-todo-list/static/css/main.4fabdc21.css",
+    "main.js": "/fabbrito/react-todo-list/static/js/main.0e7fec59.js",
+    "index.html": "/fabbrito/react-todo-list/index.html",
+    "static/media/garbageIcon.svg": "/fabbrito/react-todo-list/static/media/garbageIcon.33f3ab766456e454f7ca52d0bcce1ad0.svg",
+    "main.4fabdc21.css.map": "/fabbrito/react-todo-list/static/css/main.4fabdc21.css.map",
+    "main.0e7fec59.js.map": "/fabbrito/react-todo-list/static/js/main.0e7fec59.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4fabdc21.css",
+    "static/js/main.0e7fec59.js"
+  ]
+}
