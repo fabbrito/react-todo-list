@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Card } from "./Card";
+import Card from "./Card";
 import type { Todo } from "../components/TodoItem";
 
 interface Props {
   updateTodos: (operation: string, todo: Todo) => void;
 }
 
-export const AddTodo: React.FC<Props> = ({ updateTodos }) => {
+const AddTodo: React.FC<Props> = ({ updateTodos }) => {
   const [text, setText] = useState<string | null>(null);
 
   const submitHandler: React.FormEventHandler<HTMLFormElement> = (event) => {
@@ -45,3 +45,5 @@ export const AddTodo: React.FC<Props> = ({ updateTodos }) => {
     </Card>
   );
 };
+
+export default AddTodo;

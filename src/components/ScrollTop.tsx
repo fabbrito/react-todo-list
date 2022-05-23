@@ -5,7 +5,7 @@ interface Props {
   showScrollButton?: boolean;
 }
 
-export const ScrollTop: React.FC<Props> = ({ scrollToTheTop = () => {}, showScrollButton = false }) => {
+const ScrollTop: React.FC<Props> = ({ scrollToTheTop = () => {}, showScrollButton = false }) => {
   const onClickScroll: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     if (!showScrollButton) return;
     scrollToTheTop();
@@ -19,3 +19,5 @@ export const ScrollTop: React.FC<Props> = ({ scrollToTheTop = () => {}, showScro
     </div>
   );
 };
+
+export default ScrollTop;

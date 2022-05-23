@@ -13,7 +13,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export const Card: React.FC<Props> = ({
+const Card: React.FC<Props> = ({
   children,
   rounded,
   hasGradient,
@@ -56,3 +56,5 @@ export const Card: React.FC<Props> = ({
     </div>
   );
 };
+
+export default Card;

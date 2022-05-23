@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "./Modal";
+import Modal from "./Modal";
 // A SVG can be manipulated as a ReactComponent
 import { ReactComponent as GarbageIcon } from "../img/garbageIcon.svg";
 
@@ -9,7 +9,7 @@ interface Props {
   onCheckAll?: (isChecked: boolean) => void;
 }
 
-export const Toolbar: React.FC<Props> = ({
+const Toolbar: React.FC<Props> = ({
   searchFunction = () => {},
   onDeleteAll = async () => {},
   onCheckAll = () => {},
@@ -95,3 +95,5 @@ export const Toolbar: React.FC<Props> = ({
     </div>
   );
 };
+
+export default Toolbar;

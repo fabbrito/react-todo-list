@@ -1,5 +1,6 @@
 import React from "react";
-import { parseISO, format } from "date-fns";
+import parseISO from "date-fns/parseISO";
+import format from "date-fns/format";
 import ptBR from "date-fns/locale/pt-BR";
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
   formatToPTBR?: boolean;
 }
 
-export const DateItem: React.FC<Props> = ({ dateString, formatToPTBR = true }) => {
+const DateItem: React.FC<Props> = ({ dateString, formatToPTBR = true }) => {
   // const dateString = date.toISOString();
   const dateISO = parseISO(dateString);
   return (
@@ -21,3 +22,5 @@ export const DateItem: React.FC<Props> = ({ dateString, formatToPTBR = true }) =
     </time>
   );
 };
+
+export default DateItem;

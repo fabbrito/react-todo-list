@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Modal } from "./Modal";
-import { DateItem } from "./DateItem";
-import { Card } from "./Card";
+import Modal from "./Modal";
+import DateItem from "./DateItem";
+import Card from "./Card";
 
 export type Todo = {
   id: string;
@@ -21,7 +21,7 @@ interface Props {
 //   onDelete: (id: string) => void;
 // }
 
-export const TodoItem: React.FC<Props> = ({ todo, updateTodos }) => {
+const TodoItem: React.FC<Props> = ({ todo, updateTodos }) => {
   const todoText: string = todo.text ?? `Id: ${todo.id}`;
 
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -66,3 +66,5 @@ export const TodoItem: React.FC<Props> = ({ todo, updateTodos }) => {
     </Card>
   );
 };
+
+export default TodoItem;

@@ -7,7 +7,7 @@ interface ModalProps {
   onConfirm?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Modal: React.FC<ModalProps> = ({ children, onCancel, onConfirm, text }) => {
+const Modal: React.FC<ModalProps> = ({ children, onCancel, onConfirm, text }) => {
   return (
     <div className="modal-container">
       <div className="modal">
@@ -24,3 +24,4 @@ export const Modal: React.FC<ModalProps> = ({ children, onCancel, onConfirm, tex
     </div>
   );
 };
+export default Modal;

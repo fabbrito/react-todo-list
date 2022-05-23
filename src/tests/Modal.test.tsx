@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import { Modal } from "../components/Modal";
+import Modal from "../components/Modal";
 
 describe("Modal", () => {
   afterEach(cleanup);
