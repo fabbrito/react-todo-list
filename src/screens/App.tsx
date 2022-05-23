@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { TodoItem, Todo } from "../components/TodoItem";
-import { AddTodo } from "../components/AddTodo";
-import { Toolbar } from "../components/Toolbar";
-import { ScrollTop } from "../components/ScrollTop";
-import { compareAsc } from "date-fns";
+import Toolbar from "../components/Toolbar";
+import AddTodo from "../components/AddTodo";
+import ScrollTop from "../components/ScrollTop";
+import TodoItem from "../components/TodoItem";
+import type { Todo } from "../components/TodoItem";
+import compareAsc from "date-fns/compareAsc";
 import debounce from "lodash/debounce";
 import throttle from "lodash/throttle";
 import "../styles/app.scss";
+
+// Lazy import of components (code splitting)
+// const Toolbar = lazy(() => import("../components/Toolbar"));
+// const AddTodo = lazy(() => import("../components/AddTodo"));
+// const ScrollTop = lazy(() => import("../components/ScrollTop"));
+// const TodoItem = lazy(() => import("../components/TodoItem"));
 
 type Todos = Todo[];
 
@@ -17,7 +24,7 @@ const sortByDate = (_items: Todos): Todos => {
   });
 };
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   // Access localstorage and returns a sorted list of todos under the key "items"
   const loadTodos = (): Todos => {
     const _itemsString = localStorage.getItem("items");
@@ -29,9 +36,14 @@ export const App: React.FC = () => {
     });
   };
 
-  // Initialized state with localstorage items
+  /*
+  * App State definition
+  Initialized state with localstorage items, from loadTodos().
+  The app state is an array of "Todo" objects, each of them defined with: id, text, checked, createdAt and isVisible.
+  */
   const [todoItems, setTodoItems] = useState<Todos>(loadTodos());
 
+  // Updates the app state based on the args passed to the function
   const updateTodos = (action: string, _todo: Todo) => {
     if (action === "delete") {
       setTodoItems(onDelete(_todo, todoItems));
@@ -44,7 +56,7 @@ export const App: React.FC = () => {
     }
   };
 
-  // Find and remove a single item from the provided list, then returns the modified list
+  // Find and remove a single item from the provided list, then returns the modified re-sorted list
   const onDelete = (todo: Todo, todoList: Todos): Todos => {
     // Remove the object that matches the provided id and updates the app state
     const _items = todoList.filter((_todo) => {
@@ -53,7 +65,7 @@ export const App: React.FC = () => {
     return sortByDate(_items);
   };
 
-  // Given a new todo and a todo list, returns a new sorted list that extends the one provided
+  // Given a new todo and a list, returns a new sorted list that extends the one provided
   const onAddTodo = (todo: Todo, todoList: Todos): Todos => {
     // "todoItems ?? []" means that if todoItems is undefined or null then it returns []
     // the result from above is then destructured and "todo" is appended at the end.
@@ -61,8 +73,10 @@ export const App: React.FC = () => {
     return sortByDate(_items);
   };
 
-  // Using _debounce from lodash to debounce input for 300ms and call the search function every 1s.
-  const debouncedSearchFunction = debounce(
+  // Using debounce from lodash to debounce the changing input, which means that the search logic waits
+  // until the args stop changing (within the 300ms interval). The lodash implementation also provides
+  // a maxWait option thata forces execution every set amount of time (in this case, 1.5s).
+  const debouncedSearch = debounce(
     (text: string) => {
       setTodoItems(
         [...todoItems].map((_todo) => {
@@ -79,12 +93,13 @@ export const App: React.FC = () => {
       );
     },
     300,
-    { maxWait: 1000 }
+    { maxWait: 1500 }
   );
 
   // "useCallback" is used so that the debounced search function is memoized for each set of "todoItems",
-  // which means that a cached version of "debouncedSearch" is used until a change occurs with "todoItems".
-  const debouncedSearch = useCallback((text: string) => debouncedSearchFunction(text), [debouncedSearchFunction]);
+  // which means that a cached version of "searchFunction" is used until a change occurs with the underlying
+  // search function.
+  const searchFunction = useCallback((text: string) => debouncedSearch(text), [debouncedSearch]);
 
   // Change "checked" property of all visible items
   const onCheckAll = (isChecked: boolean) => {
@@ -177,7 +192,7 @@ export const App: React.FC = () => {
   return (
     <div className="app">
       <header className="top-container stick">
-        <Toolbar searchFunction={debouncedSearch} onCheckAll={onCheckAll} onDeleteAll={onDeleteAll} />
+        <Toolbar searchFunction={searchFunction} onCheckAll={onCheckAll} onDeleteAll={onDeleteAll} />
       </header>
       <div className="main-container">
         <div className="left-container">
@@ -207,3 +222,5 @@ export const App: React.FC = () => {
     </div>
   );
 };
+
+export default App;
