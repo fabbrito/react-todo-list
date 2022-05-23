@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import "_variables";
+@use "./abstractions" as *;
 
 *,
 *::after,
@@ -139,7 +138,7 @@ input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
 
-input[type="checkbox"]:focus {
+input[type="checkbox"]:focus-visible {
   outline: max(1px, 0.1em) solid $focus-color;
   outline-offset: max(1px, 0.1em);
 }

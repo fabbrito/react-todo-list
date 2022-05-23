@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import "_variables";
+@use "./abstractions" as *;
 
 h1,
 h2,
@@ -118,9 +117,9 @@ h4 {
     float: left;
     width: 350px;
     min-height: 150px;
-    background: $card-color;
+    background-color: $card-color;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: box-shadow 250ms;
+    transition: box-shadow $animation-time;
     padding: 1rem;
 
     h3 {
@@ -151,7 +150,6 @@ h4 {
 
     &.checked {
       background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-
       // color: inherit;
 
       // text-decoration-color: $main-text;
@@ -243,7 +241,7 @@ h4 {
       border-style: solid;
       border-radius: 0.15rem;
       border-color: white;
-      transition: border-color 250ms;
+      transition: border-color $animation-time;
 
       &:hover,
       &:focus,
@@ -304,7 +302,7 @@ h4 {
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-color: white;
-    transition: border-color 250ms;
+    transition: border-color $animation-time;
 
     &:hover,
     &:focus,
@@ -358,7 +356,7 @@ h4 {
   right: 0;
   z-index: $scroll-top-container-z-index;
   transform: translateY(0);
-  transition: transform 250ms ease-in-out;
+  transition: transform $animation-time ease-in-out;
 
   &.hidden {
     transform: translateY(100px);
