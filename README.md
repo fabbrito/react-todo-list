@@ -4,6 +4,8 @@ A Single Page Application that implements a simple TO-DO(tasks) list with persis
 
 Created using React and Typescript, plus a few extra libraries: _lodash/debounce_, _uuid_, _date-fns_ and _SASS_.
 
+Github pages: [https://fabbrito.github.io/react-todo-list/](https://fabbrito.github.io/react-todo-list/)
+
 ## Features:
 
 ### Toolbar
